@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.django_mtv, name='django_mtv'),
+    path('free', views.free_page, name='free_page')
 ]

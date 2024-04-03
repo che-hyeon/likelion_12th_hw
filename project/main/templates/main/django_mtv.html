@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div>
+    <img src="{% static 'images/logo.png' %}" alt="logo" width="100px">
+    <h1 class="contents">DJANGO MTV</h1>
+    <div class="contents">MODEL / TEMPLATE / MODEL</div>
+    <ul>
+      <li>TEMPLATE</li>
+        <ol>
+          <li>template 폴더 생성 : 프로젝트 폴더 >> 앱(main) >> templates 폴더 >> 앱 이름과 동일한 폴더 생성(main)</li>
+          <li>html명.html 파일 생성(최하위 폴더(main)에 생성)</li>
+          <li>views.py에 html파일을 요청하면 반환해주는 함수 선언</li>
+          <li>urls.py에 from main import views 작성 후, urlpatterns에 추가</li>
+        </ol>
+      <li>TEMPLATE 언어</li>
+        <ul>
+          <li>여러 파일에서 같은 정보를 활용하는 경우 사용(변수선언과 비슷)</li>
+          <li>템플릿 변수: 두 중괄호 내부에 변수명, 리스트 등을 불러옴(list나 dict은 .사용)</li>
+          <li>템플릿 태그: if문, for문 등에 사용</li>
+            <p>if문:  if  //  else  //  endif</p> 
+            <p>for문:  for num(내가 지정) in nums(context에 있는 list 변수명 같은 것들)  // {{num}} //  endfor </p>
+          <li>템플릿 필터</li>
+          <li>템플릿 주석</li>
+        </ul>
+      <li>템플릿 상속</li>
+        <ul>
+          <li>겹치는 내용이 있을 때 새로운 html파일 만들어서 한 번만 작성해도 되도록 해줌</li>
+          <li>base.html:  block content  //  endblock  이 두 선언 사이에 다른 페이지의 코드 들어간다.</li>
+          <li>다른 페이지:  extent 'base.html'  //  block content  // 해당 페이지의 내용들//  endblock </li>
+          <li>settings.py: import os 해주고, DIRS에 base.html 경로 추가</li>
+          <li>nav분리: 분리 후 기존에 있던 위치에  include 'shared(폴더명)/_navbar.html' 추가해준다</li>
+        </ul>
+      <li>STATIC</li>
+        <ul>
+          <li>image 파일이나 css파일 저장하는 역할</li>
+          <li>불러올 때 가장 위에 {% load static %}을 추가해야 한다.</li>
+          <li>경로를  static '_______' 을 통해 불러와야한다.</li>
+          <li>settings.py: django가 경로를 찾을 수 있도록 경로 추가해줘야 한다.</li>
+        </ul>
+    </ul>
+    </div>
+      
+{% endblock %}
