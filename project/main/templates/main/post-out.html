@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h3>{{post.title}}</h3>
+<hr />
+보내는 곳 : {{post.sender_place}}<br>
+{{post.sender_post_num}}<br><br>
+{% if post.image %}
+    <p><img src="{{ post.image.url }}" alt="우표" width="100px"></p>
+{% endif %}
+받는 곳 : {{post.reciever_place}}<br>
+{{post.reciever_post_num}}<br><br>
+
+<a href="{% url 'main:post_in' post.id %}">내용보기</a>
+
+<br>
+{% endblock %}

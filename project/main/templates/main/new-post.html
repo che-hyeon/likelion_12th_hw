@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<form action="{% url 'main:create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p>제목 : <textarea type="text" name="title" id="" cols="30" rows="10"></textarea>></p>
+    <p>작성자 : <input type="text" name="writer"></p>
+
+    <p>보내는 곳 : <input type="text" name="sender_place"></p>
+    <p>보낸 곳 우편번호 : <input type="number" name="sender_post_num"></p>
+    <p>우표 : <input type="file" name="image"></p>
+    <p>받는 곳 : <input type="text" name="reciever_place"></p>
+    <p>받는 곳 우편번호 : <input type="number" name="reciever_post_num"></p>
+
+    <p>받는 이 : <input type="text" name="reciever"></p>
+    <p>내용 : <textarea type="text" name="body" cols="30" rows="10"></textarea></p>
+    <p>보낸 이 : <input type="text" name="sender"></p>
+    <button type="submit">제출</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h3>{{post.title}}</h3>
+<hr />
+<p>To. {{post.reciever}}<br><br></p>
+<p>{{post.body}}<br><br></p>
+<p>from. {{post.sender}}<br></p>
+
+<a href="{% url 'main:edit' post.id %}">수정하기</a>
+<a href="{% url 'main:delete' post.id %}">삭제하기</a>
+
+<br>
+{% endblock %}

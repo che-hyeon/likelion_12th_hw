@@ -1,6 +1,8 @@
 <nav class="navbar-container">
-    <!-- mainpage 링크 연결 -->
-    <a class="navbar-link" href="{% url 'django_mtv' %}">[2주차] DJANGO_MTV 복습</a> 
-    <!-- secondpage 링크 연결 -->
-    <a class="navbar-link" href="{% url 'free_page' %}">[1주차] git_hub 복습</a>
-  </nav>
+  <!-- mainpage 링크 연결 -->
+  <a class="navbar-link" href="{% url 'main:django_mtv' %}">[2주차] DJANGO_MTV 복습</a> 
+  <!-- secondpage 링크 연결 -->
+  <a class="navbar-link" href="{% url 'main:free_page' %}">[1주차] git_hub 복습</a>
+  
+  <a class="navbar-link" href="{% url 'main:post' %}">[3주차]POST</a>
+</nav>
