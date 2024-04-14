@@ -46,10 +46,10 @@ def create(request):
 
     new_post.save()
 
-    return redirect('main:post-out', new_post.id)
+    return redirect('main:post_out', new_post.id)
 
 def update(request, id):
-    update_post = Post.objectsget(pk=id)
+    update_post = Post.objects.get(pk=id)
 
     update_post.title = request.POST['title']
     update_post.writer = request.POST['writer']
@@ -57,7 +57,8 @@ def update(request, id):
 
     update_post.sender_place = request.POST['sender_place']
     update_post.sender_post_num = request.POST['sender_post_num']
-    update_post.image = request.FILES.get('image')
+    if request.FILES.get('image'):
+        update_post.image = request.FILES.get('image')
     update_post.reciever_place = request.POST['reciever_place']
     update_post.reciever_post_num = request.POST['reciever_post_num']
 
@@ -67,7 +68,7 @@ def update(request, id):
 
     update_post.save()
 
-    return redirect('main:post-out', update_post.id)
+    return redirect('main:post_out', update_post.id)
 
 def edit(request, id):
     edit_post = Post.objects.get(pk=id)
@@ -76,5 +77,5 @@ def edit(request, id):
 def delete(request, id):
     delete_post = Post.objects.get(pk=id)
     delete_post.delete()
-    default_storage(delete_post.image.path)
+    default_storage.delete(delete_post.image.path)
     return redirect('main:post')
