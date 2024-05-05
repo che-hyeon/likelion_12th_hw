@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>my page</h1>
+
+<h3>주소 : {{ user.profile.address }}</h3>
+<h3>우편번호 : {{ user.profile.address_num }}</h3>
+
+<div>
+    {% for my_post in my_posts %}
+    <div>
+        <hr/>
+        <h3>{{my_post.title}}</h3>
+        {{my_post.writer}} | {{my_post.write_date}}
+        <a href="{% url 'main:post_out' my_post.id %}">자세히 보기</a>
+        <br>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

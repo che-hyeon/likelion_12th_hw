@@ -5,4 +5,19 @@
   <a class="navbar-link" href="{% url 'main:free_page' %}">[1주차] git_hub 복습</a>
   
   <a class="navbar-link" href="{% url 'main:post' %}">[3주차]POST</a>
+
+  <div class="nav-right">
+    {% if user.is_authenticated %}
+    <ul class="nav-link-account">
+      <li class="nav-link-user">{{user.username}}</li>
+      <li><a href="{% url 'accounts:logout' %}">log out</a></li>
+      <li><a href="{% url 'users:mypage' %}">my page</a></li>
+    </ul>
+    {% else %}
+    <ul class="nav-rink-account">
+      <li><a href="{% url 'accounts:login' %}">log in</a></li>
+      <li><a href="{% url 'accounts:signup' %}">sign up</a></li>
+    </ul>
+    {% endif %}
+  </div>
 </nav>
