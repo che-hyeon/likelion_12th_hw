@@ -5,7 +5,7 @@
 <form action="{% url 'main:create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <p>제목 : <input type="text" name="title" id=""></textarea>></p>
-    <p>작성자 : <input type="text" name="writer"></p>
+    <!-- <p>작성자 : <input type="text" name="writer"></p> -->
 
     <p>보내는 곳 : <input type="text" name="sender_place"></p>
     <p>보낸 곳 우편번호 : <input type="number" name="sender_post_num"></p>

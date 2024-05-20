@@ -4,6 +4,7 @@ from main.models import Post
 # Create your views here.
 
 def mypage(request):
-    username = request.user.username
-    my_posts = Post.objects.filter(writer=username)
+    if request.user.is_authenticated:
+        username = request.user
+        my_posts = Post.objects.filter(writer = username)
     return render(request, 'users/mypage.html', {'my_posts':my_posts})

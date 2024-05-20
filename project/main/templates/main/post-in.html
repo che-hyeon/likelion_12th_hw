@@ -7,8 +7,34 @@
 <p>{{post.body}}<br><br></p>
 <p>from. {{post.sender}}<br></p>
 
+{% if post.writer == user %}
 <a href="{% url 'main:edit' post.id %}">수정하기</a>
 <a href="{% url 'main:delete' post.id %}">삭제하기</a>
-
+{% endif %}
 <br>
+
+<div class="comment_container">
+    <div class="comment_form">
+        <h2></h2>
+        <form action="{% url 'main:post_in' post.id %}" method="POST">
+            {% csrf_token %}
+            댓글 쓰기 : <input type="text" name="content">
+            <input type="submit" name="submit">
+        </form>
+    </div>
+    <div class="comment_list">
+        {% for comment in comments %}
+        <hr>
+        <h4>작성자 : {{ comment.writer }}</h4>
+        <p>내용 : {{ comment.content }}</p>
+        <p>{{ comment.write_date }}</p>
+        {% if comment.writer == user %}
+            <a href="{% url 'main:delete_comment' comment.id %}">삭제하기</a>
+        {% endif %}
+
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock %}

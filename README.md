@@ -8,3 +8,9 @@ main page, second page
 passward : ghkdcogus
 
 오류 수정
+
+이름 : 황채현123
+password : chh
+
+이름 : 채현
+password : ghkdcogus
