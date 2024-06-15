@@ -18,4 +18,5 @@ urlpatterns = [
     path('tag-list', tag_list, name="tag-list"),
     path('tag-posts/<int:tag_id>', tag_posts, name="tag_posts"),
     path('delete-comment/<int:comment_id>', delete_comment, name="delete_comment"),
+    path('likes/<int:post_id>', likes, name="likes"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

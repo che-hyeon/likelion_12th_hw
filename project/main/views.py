@@ -127,7 +127,21 @@ def tag_posts(request, tag_id):
     })
 
 def delete_comment(request, comment_id):
-    delete_comment = Comment.objects.get(pk=comment_id)
-    delete_comment.delete()
     
-    return redirect('main:post')
+    delete_comment = Comment.objects.get(pk=comment_id)
+    post = get_object_or_404(Post, pk=delete_comment.post.id)
+    delete_comment.delete()
+
+    return render(request, 'main/post-in.html',{ 'post' : post })
+
+def likes(request, post_id):
+    post = get_object_or_404(Post, id = post_id)
+    if request.user in post.like.all():
+        post.like.remove(request.user)
+        post.like_count -= 1
+        post.save()
+    else:
+        post.like.add(request.user)
+        post.like_count += 1
+        post.save()
+    return redirect('main:post_out', post.id)

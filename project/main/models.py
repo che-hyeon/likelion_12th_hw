@@ -25,6 +25,9 @@ class Post(models.Model):
     reciever = models.CharField(max_length=20)
     body = models.TextField()
     sender = models.CharField(max_length=20)
+    
+    like = models.ManyToManyField(User, related_name='likes', blank=True)
+    like_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title

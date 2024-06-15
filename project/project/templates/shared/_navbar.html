@@ -11,9 +11,9 @@
   <div class="nav-right">
     {% if user.is_authenticated %}
     <ul class="nav-link-account">
-      <li class="nav-link-user">{{user.username}}</li>
+      <li class="nav-link-user">{{request.user.username}}</li>
       <li><a href="{% url 'accounts:logout' %}">log out</a></li>
-      <li><a href="{% url 'users:mypage' %}">my page</a></li>
+      <li><a href="{% url 'users:mypage' request.user.id %}">my page</a></li>
     </ul>
     {% else %}
     <ul class="nav-rink-account">
