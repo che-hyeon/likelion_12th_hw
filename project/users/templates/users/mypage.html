@@ -33,6 +33,7 @@
         </a>
     {% endif %}
 {% endif %}
+{% if request.user == user %}
 <div>
     {% for my_post in my_posts %}
     <div>
@@ -44,6 +45,7 @@
     </div>
     {% endfor %}
 </div>
+{% endif %}
 
 
 {% endblock %}

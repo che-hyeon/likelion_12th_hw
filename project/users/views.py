@@ -5,7 +5,7 @@ from main.models import Post
 
 def mypage(request, id):
     user = get_object_or_404(User, pk=id)
-    username = user
+    username = request.user
     my_posts = Post.objects.filter(writer = username)
     context = {
         'user':user,
